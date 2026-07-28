@@ -4,12 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Codomax Blog</title>
+    <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
-<header>
-    <nav>
-        <h2>Codomax Blog</h2>
-        <ul>
+
+<header class="header">
+    <nav class="navbar">
+        <h2 class="logo">Codomax Blog</h2>
+        <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="add-blog.html">Add Blog</a></li>
             <li><a href="#">About</a></li>
@@ -18,41 +21,40 @@
     </nav>
 </header>
 
-<section>
+<section class="hero">
     <h1>Share Your Thoughts, Inspire the World</h1>
     <p>
         Welcome to Codomax Blog. Read amazing blogs and share your own ideas.
     </p>
-    <button>Explore Blogs</button>
+    <button class="btn">
+        Explore Blogs
+    </button>
 </section>
 
-<section>
+<section class="blogs">
     <h2>Latest Blogs</h2>
-    <article>
-        <h3>JavaScript Tips</h3>
-        <p>
-            Learn useful JavaScript tricks for beginners.
-        </p>
-        <button>Read More</button>
-    </article>
-    <article>
-        <h3>Node.js Basics</h3>
-        <p>
-            Understand how backend development works using Node.js.
-        </p>
-        <button>Read More</button>
-    </article>
-    <article>
-        <h3>HTML Fundamentals</h3>
-        <p>
-            Learn HTML elements and build web pages.
-        </p>
-        <button>Read More</button>
-    </article>
+    <div class="blog-container">
+        <article class="blog-card">
+            <h3>JavaScript Tips</h3>
+            <p>Learn useful JavaScript tricks for beginners.</p>
+            <button class="btn">Read More</button>
+        </article>
+        <article class="blog-card">
+            <h3>Node.js Basics</h3>
+            <p>Understand backend development using Node.js.</p>
+            <button class="btn">Read More</button>
+        </article>
+        <article class="blog-card">
+            <h3>HTML Fundamentals</h3>
+            <p>Learn HTML elements and build web pages.</p>
+            <button class="btn">Read More</button>
+        </article>
+    </div>
 </section>
 
-<footer>
+<footer class="footer">
     <p>© 2026 Codomax Blog. All Rights Reserved.</p>
 </footer>
+
 </body>
 </html>
