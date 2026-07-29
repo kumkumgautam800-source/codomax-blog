@@ -1,80 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Blog</title>
-
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
 
 <header class="header">
-
     <nav class="navbar">
-
         <h2 class="logo">Codomax Blog</h2>
-
         <ul class="nav-links">
-
             <li><a href="index.html">Home</a></li>
-
             <li><a href="add-blog.html">Add Blog</a></li>
-
             <li><a href="#">About</a></li>
-
             <li><a href="#">Contact</a></li>
-
         </ul>
-
     </nav>
-
 </header>
 
 <section class="form-section">
-
 <div class="form-container">
-
 <h1>Add New Blog</h1>
-
 <p>Share your thoughts with the world.</p>
 
-<form>
+<!-- Corrected form start -->
+<form id="blogForm">
 
 <label>Blog Title</label>
-
-<input type="text" placeholder="Enter Blog Title">
+<input type="text" id="title" placeholder="Enter Blog Title" />
 
 <label>Author Name</label>
-
-<input type="text" placeholder="Enter Author Name">
+<input type="text" id="author" placeholder="Enter Author Name" />
 
 <label>Category</label>
-
-<input type="text" placeholder="Enter Category">
+<input type="text" id="category" placeholder="Enter Category" />
 
 <label>Blog Content</label>
-
-<textarea rows="8" placeholder="Write your blog here..."></textarea>
+<textarea id="content" rows="8" placeholder="Write your blog here..."></textarea>
 
 <button class="btn" type="submit">
-
-Publish Blog
-
+    Publish Blog
 </button>
 
 </form>
+<!-- Corrected form end -->
 
 </div>
-
 </section>
 
 <footer class="footer">
-
 <p>© 2026 Codomax Blog. All Rights Reserved.</p>
-
 </footer>
 
+<script src="js/script.js"></script>
 </body>
 </html>
