@@ -4,6 +4,7 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+app.use(express.static(__dirname));
 
 // JavaScript Array
 let blogs = [
@@ -16,10 +17,7 @@ let blogs = [
     }
 ];
 
-// Home Route
-app.get("/", (req, res) => {
-    res.send("Welcome to Codomax Blog API 🚀");
-});
+
 
 // GET All Blogs
 app.get("/blogs", (req, res) => {
