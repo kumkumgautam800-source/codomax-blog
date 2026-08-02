@@ -44,6 +44,31 @@ app.post("/blogs", (req, res) => {
 
 });
 
+// PUT - Update Blog
+app.put("/blogs/:id", (req, res) => {
+
+    const id = parseInt(req.params.id);
+
+    const blog = blogs.find(b => b.id === id);
+
+    if (!blog) {
+        return res.status(404).json({
+            message: "Blog not found"
+        });
+    }
+
+    blog.title = req.body.title;
+    blog.author = req.body.author;
+    blog.category = req.body.category;
+    blog.content = req.body.content;
+
+    res.json({
+        message: "Blog Updated Successfully",
+        blog
+    });
+
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });

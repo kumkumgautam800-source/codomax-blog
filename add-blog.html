@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Blog</title>
+
     <link rel="stylesheet" href="css/style.css" />
 </head>
 
@@ -12,6 +13,7 @@
 <header class="header">
     <nav class="navbar">
         <h2 class="logo">Codomax Blog</h2>
+
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="add-blog.html">Add Blog</a></li>
@@ -22,39 +24,60 @@
 </header>
 
 <section class="form-section">
-<div class="form-container">
-<h1>Add New Blog</h1>
-<p>Share your thoughts with the world.</p>
 
-<!-- Corrected form start -->
-<form id="blogForm">
+    <div class="form-container">
 
-<label>Blog Title</label>
-<input type="text" id="title" placeholder="Enter Blog Title" />
+        <h1>Add New Blog</h1>
 
-<label>Author Name</label>
-<input type="text" id="author" placeholder="Enter Author Name" />
+        <p>Share your thoughts with the world.</p>
 
-<label>Category</label>
-<input type="text" id="category" placeholder="Enter Category" />
+        <form id="blogForm">
 
-<label>Blog Content</label>
-<textarea id="content" rows="8" placeholder="Write your blog here..."></textarea>
+            <label>Blog Title</label>
+            <input
+                type="text"
+                id="title"
+                placeholder="Enter Blog Title">
 
-<button class="btn" type="submit">
-    Publish Blog
-</button>
+            <label>Author Name</label>
+            <input
+                type="text"
+                id="author"
+                placeholder="Enter Author Name">
 
-</form>
-<!-- Corrected form end -->
+            <label>Category</label>
+            <input
+                type="text"
+                id="category"
+                placeholder="Enter Category">
 
-</div>
+            <label>Blog Content</label>
+            <textarea
+                id="content"
+                rows="8"
+                placeholder="Write your blog here..."></textarea>
+
+            <!-- Updated Button -->
+            <button
+                id="submitBtn"
+                class="btn"
+                type="submit">
+
+                Publish Blog
+
+            </button>
+
+        </form>
+
+    </div>
+
 </section>
 
 <footer class="footer">
-<p>© 2026 Codomax Blog. All Rights Reserved.</p>
+    <p>© 2026 Codomax Blog. All Rights Reserved.</p>
 </footer>
 
 <script src="js/script.js"></script>
+
 </body>
 </html>
