@@ -44,6 +44,19 @@ app.post("/blogs", (req, res) => {
 
 });
 
+// DELETE Blog
+app.delete("/blogs/:id", (req, res) => {
+
+    const id = Number(req.params.id);
+
+    blogs = blogs.filter(blog => blog.id !== id);
+
+    res.json({
+        message: "Blog Deleted Successfully"
+    });
+
+});
+
 // PUT - Update Blog
 app.put("/blogs/:id", (req, res) => {
 

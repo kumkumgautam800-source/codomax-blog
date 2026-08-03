@@ -23,6 +23,12 @@ fetch("http://localhost:3000/blogs")
                     Edit
                 </button>
 
+                <button
+                    class="btn delete-btn"
+                    onclick="deleteBlog(${blog.id})">
+                    Delete
+                </button>
+
             </div>
         `;
 
@@ -30,12 +36,38 @@ fetch("http://localhost:3000/blogs")
 
 });
 
+// Edit Blog
 function editBlog(id){
 
-    // Blog ID save karo
     localStorage.setItem("editBlogId", id);
 
-    // Add Blog page open karo
     window.location.href = "add-blog.html";
+
+}
+
+// Delete Blog
+function deleteBlog(id){
+
+    const confirmDelete = confirm("Are you sure you want to delete this blog?");
+
+    if(!confirmDelete){
+        return;
+    }
+
+    fetch(`http://localhost:3000/blogs/${id}`, {
+
+        method: "DELETE"
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        alert(data.message);
+
+        location.reload();
+
+    });
 
 }

@@ -260,3 +260,12 @@ form .btn{
 .blog-card h3{
     color:#5b4bff;
 }
+
+.delete-btn{
+    background:#ff4d4d;
+    margin-top:10px;
+}
+
+.delete-btn:hover{
+    background:#e60000;
+}

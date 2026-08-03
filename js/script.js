@@ -81,8 +81,35 @@ form.addEventListener("submit", function (event) {
     // NEW BLOG
     else {
 
+    fetch("http://localhost:3000/blogs", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            title,
+            author,
+            category,
+            content
+        })
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
         alert("Blog Published Successfully!");
 
-    }
+        form.reset();
+
+        window.location.href = "index.html";
+
+    });
+
+}
 
 });
