@@ -4,6 +4,16 @@ fetch("http://localhost:3000/blogs")
 
     const container = document.getElementById("blogContainer");
 
+    // No Blogs
+    if (blogs.length === 0) {
+        container.innerHTML = `
+            <h2 style="text-align:center;">
+                No Blogs Available
+            </h2>
+        `;
+        return;
+    }
+
     blogs.forEach(blog => {
 
         container.innerHTML += `
@@ -33,6 +43,13 @@ fetch("http://localhost:3000/blogs")
         `;
 
     });
+
+})
+.catch(error => {
+
+    console.log(error);
+
+    alert("Unable to load blogs.");
 
 });
 
@@ -67,6 +84,14 @@ function deleteBlog(id){
         alert(data.message);
 
         location.reload();
+
+    })
+
+    .catch(error => {
+
+        console.log(error);
+
+        alert("Delete Failed!");
 
     });
 

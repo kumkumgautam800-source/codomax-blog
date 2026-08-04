@@ -21,6 +21,10 @@ if (editBlogId) {
                 document.getElementById("content").value = blog.content;
             }
 
+        })
+        .catch(error => {
+            console.log(error);
+            alert("Unable to load blog.");
         });
 
 }
@@ -43,6 +47,10 @@ form.addEventListener("submit", function (event) {
         alert("Please fill all fields.");
         return;
     }
+
+    // Loading Button
+    submitBtn.disabled = true;
+    submitBtn.textContent = editBlogId ? "Updating..." : "Publishing...";
 
     // EDIT BLOG
     if (editBlogId) {
@@ -74,6 +82,17 @@ form.addEventListener("submit", function (event) {
 
             window.location.href = "index.html";
 
+        })
+
+        .catch(error => {
+
+            console.log(error);
+
+            alert("Server Error!");
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Update Blog";
+
         });
 
     }
@@ -81,35 +100,46 @@ form.addEventListener("submit", function (event) {
     // NEW BLOG
     else {
 
-    fetch("http://localhost:3000/blogs", {
+        fetch("http://localhost:3000/blogs", {
 
-        method: "POST",
+            method: "POST",
 
-        headers: {
-            "Content-Type": "application/json"
-        },
+            headers: {
+                "Content-Type": "application/json"
+            },
 
-        body: JSON.stringify({
-            title,
-            author,
-            category,
-            content
+            body: JSON.stringify({
+                title,
+                author,
+                category,
+                content
+            })
+
         })
 
-    })
+        .then(response => response.json())
 
-    .then(response => response.json())
+        .then(data => {
 
-    .then(data => {
+            alert("Blog Published Successfully!");
 
-        alert("Blog Published Successfully!");
+            form.reset();
 
-        form.reset();
+            window.location.href = "index.html";
 
-        window.location.href = "index.html";
+        })
 
-    });
+        .catch(error => {
 
-}
+            console.log(error);
+
+            alert("Server Error!");
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Publish Blog";
+
+        });
+
+    }
 
 });
