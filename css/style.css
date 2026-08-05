@@ -1,7 +1,12 @@
-/* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* ===========================
+   GOOGLE FONT
+=========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-/* Reset */
+/* ===========================
+   RESET
+=========================== */
+
 *{
     margin:0;
     padding:0;
@@ -9,169 +14,653 @@
     font-family:'Poppins',sans-serif;
 }
 
-body{
-    background:#f4f6fc;
-    color:#333;
+html{
+    scroll-behavior:smooth;
 }
 
-/* Navbar */
+body{
+    background:#f8f9fc;
+    color:#222;
+}
+
+/* ===========================
+   NAVBAR
+=========================== */
+
 .header{
-    background:#6C63FF;
-    padding:20px 8%;
+    width:100%;
+    background:#fff;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
 }
 
 .navbar{
+
+    width:85%;
+    margin:auto;
+
+    height:80px;
+
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
+
 }
 
 .logo{
-    color:white;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
     font-size:28px;
     font-weight:700;
+    color:#222;
+
+}
+
+.logo i{
+
+    color:#6C63FF;
+    font-size:26px;
+
 }
 
 .nav-links{
+
     display:flex;
     list-style:none;
-    gap:30px;
+    gap:35px;
+
 }
 
 .nav-links a{
+
     text-decoration:none;
-    color:white;
+    color:#222;
     font-weight:500;
     transition:.3s;
+
 }
 
-.nav-links a:hover{
-    color:#FFD54F;
+.nav-links a{
+
+    position:relative;
+
 }
 
-/* Hero Section */
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:#6C63FF;
+
+    transition:.3s;
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+
+    color:#6C63FF;
+
+}
+
+.nav-right{
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+
+}
+
+/* ===========================
+   SEARCH BOX
+=========================== */
+
+.search-box{
+
+    width:270px;
+    height:42px;
+
+    background:#fff;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 15px;
+
+    transition:.3s;
+
+}
+
+.search-box{
+
+    transition:.3s;
+
+}
+
+.search-box:hover{
+
+    box-shadow:0 8px 20px rgba(108,99,255,.2);
+
+}
+
+.search-box:hover{
+
+    border-color:#6C63FF;
+
+}
+
+.search-box input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:14px;
+
+}
+
+.search-box input::placeholder{
+
+    color:#999;
+
+}
+
+.search-box i{
+
+    color:#888;
+    cursor:pointer;
+
+}
+
+/* ===========================
+   PROFILE
+=========================== */
+
+.profile{
+
+    width:42px;
+    height:42px;
+
+    background:#6C63FF;
+
+    border-radius:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.profile:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* ===========================
+   HERO SECTION
+=========================== */
+
 .hero{
-    text-align:center;
-    padding:100px 10%;
-    background:linear-gradient(to bottom,#f4f6fc,#ffffff);
+
+    width:85%;
+    margin:50px auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:60px;
+
 }
 
-.hero h1{
-    font-size:55px;
-    color:#222;
+.hero-left{
+
+    flex:1;
+
+}
+
+.hero-left h1{
+
+    font-size:58px;
+
+    line-height:1.2;
+
+    font-weight:700;
+
     margin-bottom:20px;
+
 }
 
-.hero p{
-    font-size:20px;
+.hero-left span{
+
+    color:#6C63FF;
+
+}
+
+.hero-left p{
+
     color:#666;
-    margin-bottom:30px;
+
+    font-size:18px;
+
+    margin-bottom:35px;
+
+}
+
+/* ===========================
+   HERO BUTTONS
+=========================== */
+
+.hero-buttons{
+
+    display:flex;
+    gap:20px;
+
 }
 
 .btn{
+
+    display:inline-block;
+
+    text-decoration:none;
+
     background:#6C63FF;
-    color:white;
-    padding:15px 35px;
-    border:none;
+
+    color:#fff;
+
+    padding:14px 30px;
+
     border-radius:8px;
-    font-size:18px;
-    cursor:pointer;
+
+    font-weight:600;
+
     transition:.3s;
+
+    border:none;
+
+    cursor:pointer;
+
 }
 
 .btn:hover{
-    background:#5548e0;
+
+    background:#5548e8;
+
     transform:translateY(-3px);
+
 }
 
-/* Blog Section */
+.btn-outline{
+
+    background:#fff;
+
+    color:#6C63FF;
+
+    border:2px solid #6C63FF;
+
+}
+
+.btn-outline:hover{
+
+    background:#6C63FF;
+
+    color:#fff;
+
+}
+
+/* ===========================
+   HERO IMAGE
+=========================== */
+
+.hero-right{
+
+    flex:1;
+
+    display:flex;
+    justify-content:center;
+
+}
+
+.hero-image{
+
+    width:100%;
+    max-width:520px;
+
+    animation:float 3s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+/* ===========================
+   BLOG SECTION
+=========================== */
+
 .blogs{
-    padding:60px 8%;
+
+    width:85%;
+    margin:80px auto;
+
 }
 
 .blogs h2{
+
     text-align:center;
+
     font-size:38px;
-    margin-bottom:40px;
+
+    margin-bottom:50px;
+
+    color:#222;
+
 }
 
-.blog-container{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
+/* ===========================
+   BLOG GRID
+=========================== */
+
+.blog-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
 }
+
+/* ===========================
+   BLOG CARD
+=========================== */
 
 .blog-card{
-    background:white;
-    width:320px;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:0 10px 20px rgba(0,0,0,.1);
-    transition:.3s;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
 }
 
 .blog-card:hover{
+
     transform:translateY(-10px);
+
+    box-shadow:0 20px 35px rgba(0,0,0,.15);
+
+}
+
+/* ===========================
+   BLOG IMAGE
+=========================== */
+
+.blog-card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+/* ===========================
+   BLOG CONTENT
+=========================== */
+
+.blog-card-content{
+
+    padding:22px;
+
 }
 
 .blog-card h3{
-    margin-bottom:15px;
+
+    color:#222;
+
+    font-size:24px;
+
+    margin-bottom:12px;
+
 }
 
 .blog-card p{
-    margin-bottom:20px;
+
     color:#666;
+
+    line-height:1.6;
+
+    margin-bottom:14px;
+
 }
 
-/* Footer - Updated */
-.footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:30px;
-    margin-top:80px;
-}
-
-/* Additional Style for blog-card buttons */
-.blog-card .btn{
-    margin-top:20px;
-    width:100%;
-}
-
-/* ==========================
-      Add Blog Form
-========================== */
-
-.form-section{
+.blog-meta{
 
     display:flex;
 
-    justify-content:center;
+    justify-content:space-between;
 
     align-items:center;
 
-    padding:80px 20px;
+    font-size:14px;
+
+    color:#888;
+
+    margin-bottom:18px;
+
+}
+
+.blog-meta i{
+
+    color:#6C63FF;
+
+    margin-right:6px;
+
+}
+
+/* ===========================
+   BLOG BUTTONS
+=========================== */
+
+.blog-actions{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+.blog-actions .btn{
+
+    flex:1;
+
+    text-align:center;
+
+    padding:12px;
+
+    font-size:14px;
+
+}
+
+.edit-btn{
+
+    background:#FFC107;
+
+    color:#222;
+
+}
+
+.edit-btn:hover{
+
+    background:#e0a800;
+
+}
+
+.delete-btn{
+
+    background:#ff4d4d;
+
+}
+
+.delete-btn:hover{
+
+    background:#e60000;
+
+}
+
+/* ===========================
+   READ MORE
+=========================== */
+
+.read-btn{
+
+    background:#6C63FF;
+
+}
+
+.read-btn:hover{
+
+    background:#5548e8;
+
+}
+
+/* ===========================
+   EMPTY BLOG
+=========================== */
+
+.no-blog{
+
+    text-align:center;
+
+    padding:80px;
+
+    color:#777;
+
+    font-size:22px;
+
+}
+
+/* ===========================
+   CARD IMAGE HOVER
+=========================== */
+
+.blog-card img{
+
+    transition:.4s;
+
+}
+
+.blog-card:hover img{
+
+    transform:scale(1.05);
+
+}
+
+/* ===========================
+   SEARCH RESULT
+=========================== */
+
+.highlight{
+
+    border:2px solid #6C63FF;
+
+}
+
+/* ===========================
+   ADD BLOG FORM
+=========================== */
+
+.form-section{
+
+    width:85%;
+    margin:80px auto;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
 }
 
 .form-container{
 
-    background:white;
+    width:100%;
+    max-width:750px;
 
-    width:650px;
+    background:#fff;
 
-    padding:40px;
+    padding:45px;
 
-    border-radius:15px;
+    border-radius:20px;
 
-    box-shadow:0 10px 20px rgba(0,0,0,.1);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
 
 }
 
 .form-container h1{
 
     text-align:center;
+
+    font-size:38px;
+
+    color:#222;
 
     margin-bottom:10px;
 
@@ -183,7 +672,7 @@ body{
 
     color:#666;
 
-    margin-bottom:30px;
+    margin-bottom:35px;
 
 }
 
@@ -197,35 +686,30 @@ form{
 
 label{
 
-    font-weight:600;
+    margin-top:18px;
 
     margin-bottom:8px;
 
-    margin-top:18px;
+    font-weight:600;
+
+    color:#444;
 
 }
 
 input,
-
 textarea{
 
-    padding:14px;
+    width:100%;
+
+    padding:15px;
 
     border:1px solid #ddd;
 
-    border-radius:8px;
+    border-radius:10px;
 
     font-size:16px;
 
-    outline:none;
-
-}
-
-input:focus,
-
-textarea:focus{
-
-    border-color:#6C63FF;
+    transition:.3s;
 
 }
 
@@ -235,37 +719,463 @@ textarea{
 
 }
 
+input:focus,
+textarea:focus{
+
+    border-color:#6C63FF;
+
+    transform:scale(1.02);
+
+    box-shadow:0 0 8px rgba(108,99,255,.2);
+
+    outline:none;
+
+}
+
 form .btn{
 
     margin-top:30px;
 
+    width:100%;
+
 }
 
-#blogContainer{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-    justify-content:center;
-    margin-top:40px;
+/* ===========================
+   FOOTER
+=========================== */
+
+.footer{
+
+    background:#1d1d1d;
+
+    color:#fff;
+
+    margin-top:100px;
+
+    padding:60px 8% 25px;
+
 }
+
+.footer-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:40px;
+
+}
+
+.footer-box h3{
+
+    margin-bottom:18px;
+
+    font-size:22px;
+
+}
+
+.footer-box p{
+
+    color:#ccc;
+
+    line-height:1.7;
+
+}
+
+.footer-box a{
+
+    display:block;
+
+    text-decoration:none;
+
+    color:#ddd;
+
+    margin-bottom:10px;
+
+    transition:.3s;
+
+}
+
+.footer-box a:hover{
+
+    color:#6C63FF;
+
+    padding-left:5px;
+
+}
+
+.footer-box input{
+
+    margin:18px 0;
+
+    width:100%;
+
+}
+
+.footer-box .btn{
+
+    width:100%;
+
+}
+
+/* ===========================
+   SOCIAL ICONS
+=========================== */
+
+.social-icons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:15px;
+
+}
+
+.social-icons i{
+
+    width:45px;
+
+    height:45px;
+
+    background:#6C63FF;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.social-icons i:hover{
+
+    transform:translateY(-6px);
+
+    background:#5548e8;
+
+}
+
+/* ===========================
+   FOOTER COPYRIGHT
+=========================== */
+
+.footer hr{
+
+    margin:45px 0 20px;
+
+    border:none;
+
+    height:1px;
+
+    background:#444;
+
+}
+
+.copyright{
+
+    text-align:center;
+
+    color:#bbb;
+
+    font-size:15px;
+
+}
+
+
+/* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+
+@media (max-width:1200px){
+
+    .navbar{
+        width:92%;
+    }
+
+    .hero{
+        width:92%;
+    }
+
+    .blogs{
+        width:92%;
+    }
+
+    .form-section{
+        width:92%;
+    }
+
+}
+
+@media (max-width:992px){
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:20px;
+
+        height:auto;
+
+        padding:20px 0;
+
+    }
+
+    .nav-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+
+    }
+
+    .nav-right{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .search-box{
+
+        width:100%;
+
+        max-width:350px;
+
+    }
+
+    .hero{
+
+        flex-direction:column-reverse;
+
+        text-align:center;
+
+        gap:40px;
+
+    }
+
+    .hero-left h1{
+
+        font-size:45px;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+    }
+
+    .hero-image{
+
+        max-width:420px;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .hero{
+
+        margin-top:30px;
+
+    }
+
+    .hero-left h1{
+
+        font-size:36px;
+
+    }
+
+    .hero-left p{
+
+        font-size:16px;
+
+    }
+
+    .blog-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .footer-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .form-container{
+
+        padding:30px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+    .nav-links{
+
+        gap:15px;
+
+    }
+
+    .hero-left h1{
+
+        font-size:30px;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .hero-buttons{
+
+        flex-direction:column;
+
+    }
+
+}
+
+/* ===========================
+   SCROLLBAR
+=========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f1f1f1;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#6C63FF;
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#5548e8;
+
+}
+
+/* ===========================
+   FADE ANIMATION
+=========================== */
+
+.hero,
+.blog-card,
+.form-container,
+.footer{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================
+   BUTTON EFFECT
+=========================== */
+
+.btn{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:0;
+
+    height:100%;
+
+    left:0;
+
+    top:0;
+
+    background:rgba(255,255,255,.2);
+
+    transition:.4s;
+
+}
+
+.btn:hover::after{
+
+    width:100%;
+
+}
+
+/* ===========================
+   IMAGE SHADOW
+=========================== */
+
+.hero-image{
+
+    filter:drop-shadow(0 20px 30px rgba(0,0,0,.15));
+
+}
+
+/* ===========================
+   CARD BORDER
+=========================== */
 
 .blog-card{
-    width:320px;
-    background:white;
-    border-radius:15px;
-    padding:20px;
-    box-shadow:0 10px 20px rgba(0,0,0,.1);
-}
 
-.blog-card h3{
-    color:#5b4bff;
-}
+    border:1px solid #eee;
 
-.delete-btn{
-    background:#ff4d4d;
-    margin-top:10px;
-}
-
-.delete-btn:hover{
-    background:#e60000;
 }
