@@ -3,15 +3,15 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-const PORT = 3000;
 
+// Render ke liye PORT, local par 3000
+const PORT = process.env.PORT || 3000;
 
 // =========================
 // BLOGS JSON FILE
 // =========================
 
 const BLOG_FILE = path.join(__dirname, "blogs.json");
-
 
 // =========================
 // LOAD BLOGS
@@ -20,15 +20,12 @@ const BLOG_FILE = path.join(__dirname, "blogs.json");
 let blogs = [];
 
 if (fs.existsSync(BLOG_FILE)) {
-
     const data = fs.readFileSync(BLOG_FILE, "utf-8");
 
     if (data.trim() !== "") {
         blogs = JSON.parse(data);
     }
-
 }
-
 
 // =========================
 // MIDDLEWARE
@@ -45,7 +42,6 @@ app.use(express.urlencoded({
 
 app.use(express.static(__dirname));
 
-
 // =========================
 // GET ALL BLOGS
 // =========================
@@ -55,7 +51,6 @@ app.get("/blogs", (req, res) => {
     res.json(blogs);
 
 });
-
 
 // =========================
 // ADD BLOG
@@ -79,20 +74,13 @@ app.post("/blogs", (req, res) => {
 
     };
 
-
     blogs.push(newBlog);
 
-
-    // Save to JSON
-
+    // Save blogs to JSON file
     fs.writeFileSync(
-
         BLOG_FILE,
-
         JSON.stringify(blogs, null, 2)
-
     );
-
 
     res.status(201).json({
 
@@ -103,7 +91,6 @@ app.post("/blogs", (req, res) => {
     });
 
 });
-
 
 // =========================
 // UPDATE BLOG
@@ -117,7 +104,6 @@ app.put("/blogs/:id", (req, res) => {
         b => b.id === id
     );
 
-
     if (!blog) {
 
         return res.status(404).json({
@@ -127,7 +113,6 @@ app.put("/blogs/:id", (req, res) => {
         });
 
     }
-
 
     blog.title = req.body.title;
 
@@ -139,17 +124,11 @@ app.put("/blogs/:id", (req, res) => {
 
     blog.image = req.body.image || blog.image || "";
 
-
-    // Save updated data
-
+    // Save updated blogs
     fs.writeFileSync(
-
         BLOG_FILE,
-
         JSON.stringify(blogs, null, 2)
-
     );
-
 
     res.json({
 
@@ -161,7 +140,6 @@ app.put("/blogs/:id", (req, res) => {
 
 });
 
-
 // =========================
 // DELETE BLOG
 // =========================
@@ -170,16 +148,11 @@ app.delete("/blogs/:id", (req, res) => {
 
     const id = Number(req.params.id);
 
-
     const oldLength = blogs.length;
 
-
     blogs = blogs.filter(
-
         blog => blog.id !== id
-
     );
-
 
     if (blogs.length === oldLength) {
 
@@ -191,17 +164,11 @@ app.delete("/blogs/:id", (req, res) => {
 
     }
 
-
-    // Save updated data
-
+    // Save updated blogs
     fs.writeFileSync(
-
         BLOG_FILE,
-
         JSON.stringify(blogs, null, 2)
-
     );
-
 
     res.json({
 
@@ -211,7 +178,6 @@ app.delete("/blogs/:id", (req, res) => {
 
 });
 
-
 // =========================
 // START SERVER
 // =========================
@@ -219,7 +185,7 @@ app.delete("/blogs/:id", (req, res) => {
 app.listen(PORT, () => {
 
     console.log(
-        `Server Running on http://localhost:${PORT}`
+        `Server Running on port ${PORT}`
     );
 
 });

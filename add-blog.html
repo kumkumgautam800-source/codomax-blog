@@ -2,15 +2,19 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Blog</title>
+
+    <title>Add Blog - Codomax Blog</title>
 
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
 
 <body>
@@ -22,20 +26,46 @@
         <nav class="navbar">
 
             <div class="logo">
+
                 <i class="fa-solid fa-blog"></i>
+
                 <h2>Codomax Blog</h2>
+
             </div>
 
+
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="add-blog.html" class="active">Add Blog</a></li>
-                <li><a href="about.html">About</a></li>
-<li><a href="contact.html">Contact</a></li>
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="add-blog.html" class="active">
+                        Add Blog
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
             </ul>
 
         </nav>
 
     </header>
+
 
     <!-- ================= ADD BLOG FORM ================= -->
 
@@ -47,66 +77,86 @@
 
             <p>Share your thoughts with the world.</p>
 
+
             <form id="blogForm">
+
 
                 <!-- Blog Title -->
 
-                <label>Blog Title</label>
+                <label for="title">
+                    Blog Title
+                </label>
 
                 <input
                     type="text"
                     id="title"
                     placeholder="Enter Blog Title">
 
+
                 <!-- Author -->
 
-                <label>Author Name</label>
+                <label for="author">
+                    Author Name
+                </label>
 
                 <input
                     type="text"
                     id="author"
                     placeholder="Enter Author Name">
 
+
                 <!-- Category -->
 
-                <label>Category</label>
+                <label for="category">
+                    Category
+                </label>
 
                 <input
                     type="text"
                     id="category"
                     placeholder="Enter Category">
 
-                <!-- NEW IMAGE FIELD -->
 
-                <label>Blog Image</label>
+                <!-- Blog Image -->
+
+                <label for="image">
+                    Blog Image
+                </label>
 
                 <input
                     type="file"
                     id="image"
                     accept="image/*">
 
-                <!-- IMAGE PREVIEW -->
+
+                <!-- Image Preview -->
 
                 <img
                     id="previewImage"
                     src=""
-                    alt="Preview"
-                    style="display:none;
-                    width:100%;
-                    height:250px;
-                    object-fit:cover;
-                    border-radius:10px;
-                    margin-top:15px;
-                    margin-bottom:20px;">
+                    alt="Blog Image Preview"
+                    style="
+                        display:none;
+                        width:100%;
+                        height:250px;
+                        object-fit:cover;
+                        border-radius:10px;
+                        margin-top:15px;
+                        margin-bottom:20px;
+                    ">
+
 
                 <!-- Blog Content -->
 
-                <label>Blog Content</label>
+                <label for="content">
+                    Blog Content
+                </label>
 
                 <textarea
                     id="content"
                     rows="8"
                     placeholder="Write your blog here..."></textarea>
+
 
                 <!-- Submit -->
 
@@ -119,19 +169,26 @@
 
                 </button>
 
+
             </form>
 
         </div>
 
     </section>
 
+
     <!-- ================= FOOTER ================= -->
 
     <footer class="footer">
 
-        <p>© 2026 Codomax Blog. All Rights Reserved.</p>
+        <p>
+            © 2026 Codomax Blog. All Rights Reserved.
+        </p>
 
     </footer>
+
+
+    <!-- JavaScript -->
 
     <script src="js/script.js"></script>
 
