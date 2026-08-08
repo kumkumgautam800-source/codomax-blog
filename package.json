@@ -1,13 +1,17 @@
 {
   "name": "codomax-blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "Codomax Blog - Full Stack Blog Application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "blog",
+    "express",
+    "javascript"
+  ],
+  "author": "Kumkum Gautam",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {

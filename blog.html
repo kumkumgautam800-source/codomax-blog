@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Blog Details</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="header">
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-blog"></i>
+
+            <h2>Codomax Blog</h2>
+
+        </div>
+
+        <ul class="nav-links">
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="add-blog.html">Add Blog</a></li>
+
+            <li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<!-- ================= BLOG DETAILS ================= -->
+
+<section class="single-blog">
+
+    <div class="single-blog-card">
+
+        <button
+            class="back-btn"
+            onclick="window.location.href='index.html'">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back
+
+        </button>
+
+        <img
+            id="blogImage"
+            src=""
+            alt="Blog Image">
+
+        <h1 id="blogTitle"></h1>
+
+        <div class="blog-meta">
+
+            <span>
+                <strong>Author:</strong>
+                <span id="blogAuthor"></span>
+            </span>
+
+            <span>
+                <strong>Category:</strong>
+                <span id="blogCategory"></span>
+            </span>
+
+            <span>
+                📅
+                <span id="blogDate"></span>
+            </span>
+
+        </div>
+
+        <p id="blogContent"></p>
+
+    </div>
+
+</section>
+
+<script src="js/blog.js"></script>
+
+</body>
+
+</html>

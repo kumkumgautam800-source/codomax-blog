@@ -1,98 +1,203 @@
-fetch("http://localhost:3000/blogs")
-.then(response => response.json())
-.then(blogs => {
+// ================= LOAD BLOGS =================
 
-    const container = document.getElementById("blogContainer");
+fetch("/blogs")
+    .then(response => {
 
-    if (blogs.length === 0) {
-        container.innerHTML = `
-            <h2 style="text-align:center;color:#6C63FF;">
-                No Blogs Available
-            </h2>
-        `;
-        return;
-    }
+        if (!response.ok) {
+            throw new Error("Failed to load blogs");
+        }
 
-    blogs.forEach(blog => {
+        return response.json();
 
-        container.innerHTML += `
-            <div class="blog-card">
+    })
+    .then(blogs => {
 
-                <img
-                    src="https://picsum.photos/400/250?random=${blog.id}"
-                    alt="Blog Image">
+        const container = document.getElementById("blogContainer");
 
-                <h3>${blog.title}</h3>
+        if (!container) {
+            return;
+        }
 
-                <p><strong>Author:</strong> ${blog.author}</p>
+        container.innerHTML = "";
 
-                <p><strong>Category:</strong> ${blog.category}</p>
+        if (blogs.length === 0) {
 
-                <p>${blog.content}</p>
+            container.innerHTML = `
+                <h2 style="text-align:center;color:#6C63FF;">
+                    No Blogs Available
+                </h2>
+            `;
 
-                <p style="color:gray;font-size:14px;">
-                    📅 ${new Date().toLocaleDateString()}
-                </p>
+            return;
+        }
 
-                <button class="btn">
-                    Read More
-                </button>
+        blogs.forEach(blog => {
 
-                <button
-                    class="btn edit-btn"
-                    onclick="editBlog(${blog.id})">
-                    Edit
-                </button>
+            container.innerHTML += `
 
-                <button
-                    class="btn delete-btn"
-                    onclick="deleteBlog(${blog.id})">
-                    Delete
-                </button>
+                <div class="blog-card">
 
-            </div>
-        `;
+                    <img
+                        src="${blog.image || 'https://via.placeholder.com/400x250?text=No+Image'}"
+                        alt="Blog Image"
+                    >
+
+                    <h3>${blog.title}</h3>
+
+                    <p>
+                        <strong>Author:</strong>
+                        ${blog.author}
+                    </p>
+
+                    <p>
+                        <strong>Category:</strong>
+                        ${blog.category}
+                    </p>
+
+                    <p>
+                        ${blog.content}
+                    </p>
+
+                    <p style="color:gray;font-size:14px;">
+                        📅 ${new Date().toLocaleDateString()}
+                    </p>
+
+                    <button
+                        class="btn"
+                        onclick="readMore(${blog.id})">
+                        Read More
+                    </button>
+
+                    <button
+                        class="btn edit-btn"
+                        onclick="editBlog(${blog.id})">
+                        Edit
+                    </button>
+
+                    <button
+                        class="btn delete-btn"
+                        onclick="deleteBlog(${blog.id})">
+                        Delete
+                    </button>
+
+                </div>
+
+            `;
+
+        });
+
+    })
+    .catch(error => {
+
+        console.log(error);
+
+        const container = document.getElementById("blogContainer");
+
+        if (container) {
+
+            container.innerHTML = `
+                <h2 style="text-align:center;color:#ff4d4d;">
+                    Unable to load blogs.
+                </h2>
+            `;
+
+        }
 
     });
 
-})
-.catch(error => {
 
-    console.log(error);
+// ================= SEARCH BLOG =================
 
-    alert("Unable to load blogs.");
-
-});
-
-// Search Function
 const searchInput = document.getElementById("searchInput");
 
-if(searchInput){
+if (searchInput) {
 
-    searchInput.addEventListener("keyup", function(){
+    searchInput.addEventListener("keyup", function () {
 
-        const value = this.value.toLowerCase();
+        const value = this.value.toLowerCase().trim();
 
         const cards = document.querySelectorAll(".blog-card");
 
-        cards.forEach(card=>{
+        let found = false;
 
-            const text = card.innerText.toLowerCase();
+        cards.forEach(card => {
 
-            if(text.includes(value)){
-                card.style.display="block";
-            }else{
-                card.style.display="none";
+            const titleElement = card.querySelector("h3");
+
+            const paragraphs = card.querySelectorAll("p");
+
+            const categoryElement = paragraphs[1];
+
+            const title = titleElement
+                ? titleElement.innerText.toLowerCase()
+                : "";
+
+            const category = categoryElement
+                ? categoryElement.innerText.toLowerCase()
+                : "";
+
+            if (
+                title.includes(value) ||
+                category.includes(value)
+            ) {
+
+                card.style.display = "block";
+
+                found = true;
+
+            } else {
+
+                card.style.display = "none";
+
             }
 
         });
+
+
+        // ================= NO RESULT =================
+
+        let message = document.getElementById("noResult");
+
+        if (!found && value !== "") {
+
+            if (!message) {
+
+                message = document.createElement("h2");
+
+                message.id = "noResult";
+
+                message.innerText = "No Result Found";
+
+                message.style.textAlign = "center";
+
+                message.style.color = "#6C63FF";
+
+                message.style.marginTop = "30px";
+
+                document
+                    .getElementById("blogContainer")
+                    .after(message);
+
+            }
+
+        } else {
+
+            if (message) {
+
+                message.remove();
+
+            }
+
+        }
 
     });
 
 }
 
-// Edit Blog
-function editBlog(id){
+
+// ================= EDIT BLOG =================
+
+function editBlog(id) {
 
     localStorage.setItem("editBlogId", id);
 
@@ -100,37 +205,61 @@ function editBlog(id){
 
 }
 
-// Delete Blog
-function deleteBlog(id){
 
-    const confirmDelete = confirm("Are you sure you want to delete this blog?");
+// ================= DELETE BLOG =================
 
-    if(!confirmDelete){
+function deleteBlog(id) {
+
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this blog?"
+    );
+
+    if (!confirmDelete) {
         return;
     }
 
-    fetch(`http://localhost:3000/blogs/${id}`,{
 
-        method:"DELETE"
+    fetch(`/blogs/${id}`, {
 
-    })
-
-    .then(response=>response.json())
-
-    .then(data=>{
-
-        alert(data.message);
-
-        location.reload();
+        method: "DELETE"
 
     })
 
-    .catch(error=>{
+        .then(response => {
 
-        console.log(error);
+            if (!response.ok) {
+                throw new Error("Delete failed");
+            }
 
-        alert("Delete Failed!");
+            return response.json();
 
-    });
+        })
+
+        .then(data => {
+
+            alert(data.message);
+
+            location.reload();
+
+        })
+
+        .catch(error => {
+
+            console.log(error);
+
+            alert("Delete Failed!");
+
+        });
+
+}
+
+
+// ================= READ MORE =================
+
+function readMore(id) {
+
+    localStorage.setItem("viewBlogId", id);
+
+    window.location.href = "blog.html";
 
 }
